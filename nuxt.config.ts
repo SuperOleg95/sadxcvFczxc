@@ -15,9 +15,11 @@ export default defineNuxtConfig({
     "@vueuse/motion/nuxt",
     "@vueuse/nuxt",
     "@nuxt/icon",
+    "@nuxt/content",
   ],
 
   icon: {
+    componentName: "NuxtIcon",
     serverBundle: {
       collections: ["mdi"], // <!--- this
     },

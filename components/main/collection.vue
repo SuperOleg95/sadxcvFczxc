@@ -1,42 +1,33 @@
+<script setup lang="ts">
+const { data: cards } = await useAsyncData("cards", () => {
+  return queryCollection("cards").all();
+});
+
+let items: any = [];
+
+if (cards.value) {
+  for (let card of cards.value) {
+    items.push({
+      title: card.title,
+      descr: card.description,
+      link: card.meta.link,
+      color: card.meta.color,
+    });
+  }
+}
+</script>
+
 <template>
   <MainContainer>
     <div class="grid grid-cols-3 gap-10">
-      <MainCard
-        heading="Software"
-        description="Benefit from our experience and expertise"
-        color="red"
-        link="#"
-      />
-      <MainCard
-        heading="Enginering"
-        description="From idea to finished system"
-        color="green"
-        link="#"
-      />
-      <MainCard
-        heading="Services"
-        description="We build prototypes of electronic assemblies"
-        color="orange"
-        link="#"
-      />
-      <MainCard
-        heading="Products"
-        description="Software & electronics"
-        color="lime"
-        link="#"
-      />
-      <MainCard
-        heading="Team"
-        description="Meet the contact persons"
-        color="teal"
-        link="#"
-      />
-      <MainCard
-        heading="Nearshoring"
-        description="Geo-Redundant Access Solution"
-        color="violet"
-        link="#"
-      />
+      <div v-for="item in items">
+        <MainCard
+          :heading="item.title"
+          :description="item.descr"
+          :color="item.color"
+          :link="item.link"
+        />
+      </div>
     </div>
   </MainContainer>
 </template>
