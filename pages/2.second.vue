@@ -1,12 +1,4 @@
 <script setup lang="ts">
-definePageMeta({
-  middleware: "auth",
-});
-
-definePageMeta({
-  layout: "custom",
-});
-
 let MyPerson = {
   image: "/test.jpg",
   name: "Vasua",

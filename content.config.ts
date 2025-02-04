@@ -10,5 +10,9 @@ export default defineContentConfig({
       type: "page",
       source: "cards/*.md",
     }),
+    partners: defineCollection({
+      type: "page",
+      source: "partners/*.md",
+    }),
   },
 });

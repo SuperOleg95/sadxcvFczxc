@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import "~/assets/css/main.css";
 
-definePageMeta({
-  layout: "custom",
-});
-
 const currentItemIdx = ref(0);
 
 let testimonials = [

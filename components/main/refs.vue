@@ -1,28 +1,22 @@
 <script setup lang="ts">
 import "~/assets/css/main.css";
 
-definePageMeta({
-  layout: "custom",
+const { data: partners } = await useAsyncData("partners", () => {
+  return queryCollection("partners").all();
 });
 
-let logos = [
-  {
-    id: "conti",
-    image: "/main/conti.jpg",
-  },
-  {
-    id: "bender",
-    image: "/main/bender.jpg",
-  },
-  {
-    id: "kuster",
-    image: "/main/kuster.jpg",
-  },
-  {
-    id: "fresenius",
-    image: "/main/fresenius.jpg",
-  },
-];
+let items: any = [];
+
+if (partners.value) {
+  for (let card of partners.value) {
+    items.push({
+      id: card.id,
+      image: card.meta.image,
+    });
+  }
+}
+
+console.log(items);
 </script>
 
 <template>
@@ -33,11 +27,11 @@ let logos = [
     </div>
     <div class="flow-root mt-8 lg:mt-10">
       <div
-        v-if="logos && logos.length > 0"
+        v-if="items && items.length > 0"
         class="grid gap-4 md:grid-cols-4 md:gap-8"
       >
         <div
-          v-for="(logo, fileIdx) in logos"
+          v-for="(logo, fileIdx) in items"
           :key="logo.id"
           v-motion
           :initial="{

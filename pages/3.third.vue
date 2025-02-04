@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import "~/assets/css/main.css";
 
-definePageMeta({
-  layout: "custom",
-});
-
 let steps: any = [
   {
     image: "/test.jpg",
